@@ -1,0 +1,27 @@
+2013-06-15 01:28:58,693 [21] ERROR MessagesController - Error adding product with id 575c579cfc97494cad7b7b14840ee911
+System.ArgumentException: A route named 'DefaultApi' could not be found in the route collection.
+Parameter name: name
+   at System.Web.Routing.RouteCollection.GetVirtualPath(RequestContext requestContext, String name, RouteValueDictionary values)
+   at System.Web.Http.WebHost.Routing.HostedHttpRouteCollection.GetVirtualPath(HttpRequestMessage request, String name, IDictionary`2 values)
+   at System.Web.Http.Routing.UrlHelper.GetHttpRouteHelper(HttpRequestMessage request, String routeName, IDictionary`2 routeValues)
+   at System.Web.Http.Routing.UrlHelper.GetHttpRouteHelper(HttpRequestMessage request, String routeName, Object routeValues)
+   at System.Web.Http.Routing.UrlHelper.Route(String routeName, Object routeValues)
+   at System.Web.Http.Routing.UrlHelper.Link(String routeName, Object routeValues)
+   at MessagingToolkit.Service.Web.Controllers.MessagesController.Send(Outgoing msg) in c:\MySpace\2009\messagingToolkit\messagingtoolkit\MessagingToolkit.Demos\MessagingToolkit.Service.Web\Controllers\MessagesController.cs:line 44
+2013-06-15 01:29:25,998 [25] ERROR MessagesController - Error adding product with id 
+System.ServiceModel.CommunicationObjectFaultedException: The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   at System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   at System.ServiceModel.ClientBase`1.Close()
+   at System.ServiceModel.ClientBase`1.System.IDisposable.Dispose()
+   at MessagingToolkit.Service.Web.Proxy.CommandServiceProxy`2.Process(TQuery query) in c:\MySpace\2009\messagingToolkit\messagingtoolkit\MessagingToolkit.Demos\MessagingToolkit.Service.Web\Proxy\CommandServiceProxy.cs:line 17
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute2[T0,T1,TRet](CallSite site, T0 arg0, T1 arg1)
+   at MessagingToolkit.Service.Web.CompositionRoot.CommandProcessor.Execute[TResult](ICommand`1 query) in c:\MySpace\2009\messagingToolkit\messagingtoolkit\MessagingToolkit.Demos\MessagingToolkit.Service.Web\CompositionRoot\CommandProcessor.cs:line 28
+   at MessagingToolkit.Service.Web.Controllers.MessagesController.Send(Outgoing msg) in c:\MySpace\2009\messagingToolkit\messagingtoolkit\MessagingToolkit.Demos\MessagingToolkit.Service.Web\Controllers\MessagesController.cs:line 41

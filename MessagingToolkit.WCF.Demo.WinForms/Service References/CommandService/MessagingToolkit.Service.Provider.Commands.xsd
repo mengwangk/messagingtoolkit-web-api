@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Provider.Commands" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Provider.Commands" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" />
+  <xs:complexType name="AddGatewayCommand">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" minOccurs="0" name="Gateway" nillable="true" type="q1:Gateway" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddGatewayCommand" nillable="true" type="tns:AddGatewayCommand" />
+  <xs:complexType name="GetGatewayStatusCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GatewayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetGatewayStatusCommand" nillable="true" type="tns:GetGatewayStatusCommand" />
+  <xs:complexType name="AddIncomingMessageCommand">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" minOccurs="0" name="Message" nillable="true" type="q2:Incoming" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddIncomingMessageCommand" nillable="true" type="tns:AddIncomingMessageCommand" />
+  <xs:complexType name="DeleteIncomingMessageCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeleteIncomingMessageCommand" nillable="true" type="tns:DeleteIncomingMessageCommand" />
+  <xs:complexType name="GetAllIncomingMessagesCommand">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="GetAllIncomingMessagesCommand" nillable="true" type="tns:GetAllIncomingMessagesCommand" />
+  <xs:complexType name="GetIncomingMessageByIdCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetIncomingMessageByIdCommand" nillable="true" type="tns:GetIncomingMessageByIdCommand" />
+  <xs:complexType name="UpdateIncomingMessageCommand">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" minOccurs="0" name="Message" nillable="true" type="q3:Incoming" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateIncomingMessageCommand" nillable="true" type="tns:UpdateIncomingMessageCommand" />
+  <xs:complexType name="AddOutgoingMessageCommand">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" minOccurs="0" name="Message" nillable="true" type="q4:Outgoing" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddOutgoingMessageCommand" nillable="true" type="tns:AddOutgoingMessageCommand" />
+  <xs:complexType name="DeleteGatewayCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeleteGatewayCommand" nillable="true" type="tns:DeleteGatewayCommand" />
+  <xs:complexType name="DeleteOutgoingMessageCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeleteOutgoingMessageCommand" nillable="true" type="tns:DeleteOutgoingMessageCommand" />
+  <xs:complexType name="GetAllGatewaysCommand">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="GetAllGatewaysCommand" nillable="true" type="tns:GetAllGatewaysCommand" />
+  <xs:complexType name="GetAllOutgoingMessagesCommand">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="GetAllOutgoingMessagesCommand" nillable="true" type="tns:GetAllOutgoingMessagesCommand" />
+  <xs:complexType name="GetAppConfigCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Module" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetAppConfigCommand" nillable="true" type="tns:GetAppConfigCommand" />
+  <xs:complexType name="GetGatewayByIdCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetGatewayByIdCommand" nillable="true" type="tns:GetGatewayByIdCommand" />
+  <xs:complexType name="GetOutgoingMessageByIdCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetOutgoingMessageByIdCommand" nillable="true" type="tns:GetOutgoingMessageByIdCommand" />
+  <xs:complexType name="UpdateGatewayCommand">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" minOccurs="0" name="Gateway" nillable="true" type="q5:Gateway" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateGatewayCommand" nillable="true" type="tns:UpdateGatewayCommand" />
+  <xs:complexType name="GetOutgoingMessagesByStatusCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetOutgoingMessagesByStatusCommand" nillable="true" type="tns:GetOutgoingMessagesByStatusCommand" />
+  <xs:complexType name="GetUnsentMessagesCommand">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="GetUnsentMessagesCommand" nillable="true" type="tns:GetUnsentMessagesCommand" />
+  <xs:complexType name="UpdateOutgoingMessageCommand">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" minOccurs="0" name="Message" nillable="true" type="q6:Outgoing" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateOutgoingMessageCommand" nillable="true" type="tns:UpdateOutgoingMessageCommand" />
+</xs:schema>

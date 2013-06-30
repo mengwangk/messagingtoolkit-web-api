@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MessagingToolkit.Service.Common.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Gateway">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="auto_start" type="xs:boolean" />
+      <xs:element minOccurs="0" name="date_created" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="date_modified" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="gw_config" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="gw_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="gw_type" type="xs:int" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="initialize" type="xs:boolean" />
+      <xs:element minOccurs="0" name="smsc_no" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Gateway" nillable="true" type="tns:Gateway" />
+  <xs:complexType name="Incoming">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date_created" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="date_modified" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="msg_content" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Incoming" nillable="true" type="tns:Incoming" />
+  <xs:complexType name="Outgoing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date_created" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="date_modified" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="msg_content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="msg_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Outgoing" nillable="true" type="tns:Outgoing" />
+  <xs:complexType name="ArrayOfIncoming">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Incoming" nillable="true" type="tns:Incoming" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIncoming" nillable="true" type="tns:ArrayOfIncoming" />
+  <xs:complexType name="ArrayOfGateway">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Gateway" nillable="true" type="tns:Gateway" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGateway" nillable="true" type="tns:ArrayOfGateway" />
+  <xs:complexType name="ArrayOfOutgoing">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Outgoing" nillable="true" type="tns:Outgoing" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOutgoing" nillable="true" type="tns:ArrayOfOutgoing" />
+  <xs:complexType name="AppConfig">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="configurable" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="date_created" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="date_modified" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="module" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppConfig" nillable="true" type="tns:AppConfig" />
+</xs:schema>

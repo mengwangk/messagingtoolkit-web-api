@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1038c939-34cf-42e4-b2ef-649bcecba504" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="MessagingToolkit.Service.Common" />
+      <ReferencedAssembly AssemblyName="MessagingToolkit.Service.Provider" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:1688/messagingtoolkit/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="v1.0.wsdl" MetadataType="Wsdl" ID="efdead50-7df8-4604-8080-a342d275fc85" SourceId="1" SourceUrl="net.tcp://localhost:1688/messagingtoolkit/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="1df25e66-9c33-49fb-b863-111311a26708" SourceId="1" SourceUrl="net.tcp://localhost:1688/messagingtoolkit/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="15119714-f480-438f-ac63-864c7850c11e" SourceId="1" SourceUrl="net.tcp://localhost:1688/messagingtoolkit/mex" />
+    <MetadataFile FileName="MessagingToolkit.Service.Provider.Commands.xsd" MetadataType="Schema" ID="c17128c3-2d6c-40d5-9d06-605fe9e05af2" SourceId="1" SourceUrl="net.tcp://localhost:1688/messagingtoolkit/mex" />
+    <MetadataFile FileName="MessagingToolkit.Service.Common.Models.xsd" MetadataType="Schema" ID="f3fac49c-94b3-461a-b0a1-02e7c2bdb763" SourceId="1" SourceUrl="net.tcp://localhost:1688/messagingtoolkit/mex" />
+    <MetadataFile FileName="v1.0.xsd" MetadataType="Schema" ID="8b657a5f-b050-4cd3-8b3d-6df4b57ecbd9" SourceId="1" SourceUrl="net.tcp://localhost:1688/messagingtoolkit/mex" />
+    <MetadataFile FileName="MessagingToolkit.Service.Common.xsd" MetadataType="Schema" ID="0620bad3-7666-4bc5-887a-131aab129f03" SourceId="1" SourceUrl="net.tcp://localhost:1688/messagingtoolkit/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
