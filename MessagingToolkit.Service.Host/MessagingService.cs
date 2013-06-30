@@ -717,7 +717,7 @@ namespace MessagingToolkit.Service.Host
         private GatewayStatusInfo StopGateway(ICommand command)
         {
             StopGatewayCommand stopGwCmd = command as StopGatewayCommand;
-            logger.DebugFormat("Start gateway. ID is [{0}]", stopGwCmd.Id);
+            logger.DebugFormat("Stop gateway. ID is [{0}]", stopGwCmd.Id);
             IGateway gateway;
             if (messageGatewayService.Find(stopGwCmd.Id, out gateway))
             {

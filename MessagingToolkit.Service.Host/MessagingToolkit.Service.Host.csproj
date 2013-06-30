@@ -90,7 +90,6 @@
     </Compile>
     <Compile Include="Definition.cs" />
     <Compile Include="Pollers\OutgoingMessagePoller.cs" />
-    <Compile Include="PriorityQueue.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>

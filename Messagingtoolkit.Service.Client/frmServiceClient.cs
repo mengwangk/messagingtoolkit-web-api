@@ -204,9 +204,31 @@ namespace Messagingtoolkit.Service.Client
             }
         }
 
-        private void btnStopGateway_Click(object sender, EventArgs e)
+        private async void btnStopGateway_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int selectedIndex = lstGateways.SelectedIndex;
+                if (selectedIndex >= 0)
+                {
 
+                    Gateway gw = gateways[selectedIndex];
+                    if (FormHelper.Confirm("Stop gateway " + gw.gw_name) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        var response = await client.GetAsync("api/gateways/stop/" + gw.id);
+                        response.EnsureSuccessStatusCode();
+                        FormHelper.ShowInfo("Gateway is stopping. Refresh to view latest status.");
+                    }
+                }
+                else
+                {
+                    FormHelper.ShowInfo("Select a gateway to stop");
+                }
+            }
+            catch (Exception ex)
+            {
+                FormHelper.ShowError(string.Format("Error stopping gateway:  " + ex.Message));
+            }
         }
     }
 }
