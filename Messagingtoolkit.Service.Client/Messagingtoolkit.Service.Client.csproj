@@ -70,7 +70,9 @@
     <Compile Include="Models\Gateway.cs" />
     <Compile Include="Models\GatewayStatusInfo.cs" />
     <Compile Include="Models\Incoming.cs" />
+    <Compile Include="Models\MessageInformation.cs" />
     <Compile Include="Models\Outgoing.cs" />
+    <Compile Include="Models\SMS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmServiceClient.resx">

@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using Messagingtoolkit.Service.Client.Models;
+using MessagingToolkit.Service.Client.Models;
 using MessagingToolkit.Service.Client.Helpers;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
 
-namespace Messagingtoolkit.Service.Client
+namespace MessagingToolkit.Service.Client
 {
     public partial class frmServiceClient : Form
     {
@@ -228,6 +228,82 @@ namespace Messagingtoolkit.Service.Client
             catch (Exception ex)
             {
                 FormHelper.ShowError(string.Format("Error stopping gateway:  " + ex.Message));
+            }
+        }
+
+        private async void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            if (!FormHelper.ValidateNotEmpty(txtPhoneNumber, "Phone number cannot be empty")) return;
+            if (!FormHelper.ValidateNotEmpty(txtMessage, "Message cannot be empty")) return;
+
+            try
+            {
+                SMS sms = new SMS() { DestinationAddress = txtPhoneNumber.Text, Content = txtMessage.Text };
+                Outgoing outgoing = new Outgoing { msg_content = JsonConvert.SerializeObject(sms, Formatting.Indented) };
+                var response = await client.PostAsJsonAsync<Outgoing>("api/messages/send", outgoing);
+                response.EnsureSuccessStatusCode();
+                outgoing = response.Content.ReadAsAsync<Outgoing>().Result;
+                FormHelper.ShowInfo("Queued message id is " + outgoing.id);
+            }
+            catch (Exception ex)
+            {
+                FormHelper.ShowError(string.Format("Error sending message:  " + ex.Message));
+            }
+
+
+        }
+
+        private async void btnGetSentMessages_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var response = await client.GetAsync("api/messages/sent");
+                response.EnsureSuccessStatusCode();
+                Outgoing[] outgoings = response.Content.ReadAsAsync<Outgoing[]>().Result;
+                lstSentMessages.Items.Clear();
+                if (outgoings.Count() > 0)
+                {
+                    foreach (Outgoing outgoing in outgoings)
+                    {
+                        SMS msg = JsonConvert.DeserializeObject<SMS>(outgoing.msg_content);
+                        lstSentMessages.Items.Add("Sent to:" + msg.DestinationAddress + ", ID: " + outgoing.id + ", Status: " + outgoing.status);
+                    }
+                }
+                else
+                {
+                    FormHelper.ShowInfo("No outgoing messages");
+                }
+            }
+            catch (Exception ex)
+            {
+                FormHelper.ShowError(string.Format("Error retrieving sent messages:  " + ex.Message));
+            }
+        }
+
+        private async void btnGetReceivedMessages_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var response = await client.GetAsync("api/messages/received");
+                response.EnsureSuccessStatusCode();
+                Incoming[] incomings = response.Content.ReadAsAsync<Incoming[]>().Result;
+                lstSentMessages.Items.Clear();
+                if (incomings.Count() > 0)
+                {
+                    foreach (Incoming incoming in incomings)
+                    {
+                        MessageInformation msg = JsonConvert.DeserializeObject<MessageInformation>(incoming.msg_content);
+                        lstSentMessages.Items.Add("Received from:" + msg.PhoneNumber + ", ID: " + incoming.id);
+                    }
+                }
+                else
+                {
+                    FormHelper.ShowInfo("No incoming messages");
+                }
+            }
+            catch (Exception ex)
+            {
+                FormHelper.ShowError(string.Format("Error retrieving received messages:  " + ex.Message));
             }
         }
     }
