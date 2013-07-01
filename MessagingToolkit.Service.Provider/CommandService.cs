@@ -59,19 +59,32 @@ namespace MessagingToolkit.Service.Provider
             
         }
 
+        /// <summary>
+        /// Executes the specified command.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <returns></returns>
         public object Execute(object command)
         {
-            Type commandType = command.GetType();
+            try
+            {
+                Type commandType = command.GetType();
 
-            if (logger.IsDebugEnabled)
-                logger.Debug("Command received: " + commandType.FullName);
+                if (logger.IsDebugEnabled)
+                    logger.Debug("Command received: " + commandType.FullName);
 
-            Type resultType = CommandTypesProvider.GetCommandResultType(commandType);
+                Type resultType = CommandTypesProvider.GetCommandResultType(commandType);
 
-            Type commandHandlerType = typeof(ICommandHandler<,>).MakeGenericType(commandType, resultType);
-            ICommandHandler commandHandler = Bootstrapper.GetInstance(commandHandlerType) as ICommandHandler;
-            commandHandler.Provider = this;
-            return commandHandlerType.GetMethod("Process").Invoke(commandHandler, new[] { command });
+                Type commandHandlerType = typeof(ICommandHandler<,>).MakeGenericType(commandType, resultType);
+                ICommandHandler commandHandler = Bootstrapper.GetInstance(commandHandlerType) as ICommandHandler;
+                commandHandler.Provider = this;
+                return commandHandlerType.GetMethod("Process").Invoke(commandHandler, new[] { command });
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error executing command", ex);
+                throw;
+            }
         }
 
 

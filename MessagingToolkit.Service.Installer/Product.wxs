@@ -1,31 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Predefined constants -->
+<?define ProductVersion = "1.0.0.0"?>
+<?define ProductUpgradeCode = "5a6fd98a-ce93-4344-9f75-de71229286c3"?>
+<?define ProductManufacturer = "Twit88.com"?>
+<?define ProductName = "MessagingToolkit Web API"?>
+<?define ProductURL = "http://www.twit88.com"?>
+<?define ProductIcon = "smartgateway.ico"?>
+
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="MessagingToolkit.Service.Installer" Language="1033" Version="1.0.0.0" Manufacturer="TWIT88.com"
-           UpgradeCode="5a6fd98a-ce93-4344-9f75-de71229286c3">
-    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+  <Product Id="*" Name="$(var.ProductName)" Language="1033" Version="$(var.ProductVersion)" Manufacturer="$(var.ProductManufacturer)"
+           UpgradeCode="$(var.ProductUpgradeCode)">
 
-    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-    <MediaTemplate />
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Comments="$(var.ProductName) Windows Installer Package"/>
 
-    <Feature Id="ProductFeature" Title="MessagingToolkit.Service.Installer" Level="1">
+    <Icon Id="ProductIcon" SourceFile="$(var.ProductIcon)"/>
+    <Property Id="ARPPRODUCTICON" Value="ProductIcon"/>
+    <Property Id="ARPHELPLINK" Value="$(var.ProductURL)"/>
+    <Property Id="ARPURLINFOABOUT" Value="$(var.ProductURL)"/>
+    <Property Id="ARPNOREPAIR" Value="1"/>
+    <!--<Property Id="ARPNOMODIFY" Value="1"/>-->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"/>
+
+    <!-- Display the WIX UI for user to choose installation folder -->
+    <UIRef Id="WixUI_InstallDir" />
+
+    <!-- TODO - license dialog -->
+
+
+    <!-- TODO - installation dialog icon -->
+
+
+    <Upgrade Id="$(var.ProductUpgradeCode)">
+      <UpgradeVersion Minimum="$(var.ProductVersion)" OnlyDetect="yes" Property="NEWERVERSIONDETECTED"/>
+      <UpgradeVersion Minimum="0.0.0" Maximum="$(var.ProductVersion)" IncludeMinimum="yes" IncludeMaximum="no"
+                      Property="OLDERVERSIONBEINGUPGRADED"/>
+    </Upgrade>
+
+    <Condition Message="A newer version of $(var.ProductName) is already installed.">NOT NEWERVERSIONDETECTED</Condition>
+
+
+    <!--
+    <MajorUpgrade DowngradeErrorMessage="A newer version of $(var.ProductName) is already installed." />
+    -->
+    <MediaTemplate CabinetTemplate="$(var.ProductName){0}.cab" EmbedCab="yes"/>
+
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallValidate"/>
+    </InstallExecuteSequence>
+
+    <Feature Id="ProductFeature" Title="MessagingToolkit Web API" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
     </Feature>
   </Product>
 
   <Fragment>
+
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="MessagingToolkit.Service.Installer" />
+        <Directory Id="INSTALLDIR" Name="$(var.ProductName)">
+          <Component Id="ApplicationFiles" Guid="0B868AEE-8871-413A-9EB3-64DAD6F84207">
+
+            <!-- Binaries -->
+            <File Id="MessagingToolkit.Service.Common" Source="$(var.MessagingToolkit.Service.Common.TargetPath)"/>
+            <File Id="MessagingToolkit.Service.Client" Source="$(var.MessagingToolkit.Service.Client.TargetPath)"/>
+            <File Id="MessagingToolkit.Service.ControlPanel" Source="$(var.MessagingToolkit.Service.ControlPanel.TargetPath)"/>
+            <File Id="MessagingToolkit.Service.Host" Source="$(var.MessagingToolkit.Service.Host.TargetPath)"/>
+            <File Id="MessagingToolkit.Service.Provider" Source="$(var.MessagingToolkit.Service.Provider.TargetPath)"/>
+            <File Id="MessagingToolkit.Service.Web" Source="$(var.MessagingToolkit.Service.Web.TargetPath)"/>
+            <File Id="MessagingToolkit.Service.Web.Host" Source="$(var.MessagingToolkit.Service.Web.Host.TargetPath)"/>
+          
+
+            
+            <!--  External dependencies 
+            <File Id="LibJpeg" Source="$(var.LibJpeg.TargetPath)"/>
+            <File Id="Video.DirectShow" Source="$(var.Video.DirectShow.TargetPath)"/>
+            <File Id="NLog" Source="$(var.SolutionDir)libs\NLog\NLog.dll"/>
+            <File Id="Log4Net" Source="$(var.SolutionDir)libs\log4net\log4net.dll"/>
+            <File Id="AForge" Source="$(var.SolutionDir)libs\AForge\AForge.dll"/>
+            <File Id="AForge.Controls" Source="$(var.SolutionDir)libs\AForge\AForge.Controls.dll"/>
+            <File Id="AForge.Video" Source="$(var.SolutionDir)libs\AForge\AForge.Video.dll"/>
+            <File Id="AForge.Video.FFMPEG" Source="$(var.SolutionDir)libs\AForge\AForge.Video.FFMPEG.dll"/>
+            <File Id="AForge.Imaging" Source="$(var.SolutionDir)libs\AForge\AForge.Imaging.dll"/>
+            <File Id="AForge.Math" Source="$(var.SolutionDir)libs\AForge\AForge.Math.dll"/>
+            <File Id="ffmpeg.avcodec" Source="$(var.SolutionDir)libs\ffmpeg\bin\avcodec-53.dll"/>
+            <File Id="ffmpeg.avdevice" Source="$(var.SolutionDir)libs\ffmpeg\bin\avdevice-53.dll"/>
+            <File Id="ffmpeg.avfilter" Source="$(var.SolutionDir)libs\ffmpeg\bin\avfilter-2.dll"/>
+            <File Id="ffmpeg.avformat" Source="$(var.SolutionDir)libs\ffmpeg\bin\avformat-53.dll"/>
+            <File Id="ffmpeg.avutil" Source="$(var.SolutionDir)libs\ffmpeg\bin\avutil-51.dll"/>
+            <File Id="ffmpeg.swscale" Source="$(var.SolutionDir)libs\ffmpeg\bin\swscale-2.dll"/>
+            -->
+
+
+            <!-- Configuration files
+            <File Id="Doodle.UI.WinForms.Config" Source="$(var.Doodle.UI.WinForms.TargetPath).config"/>
+            <File Id="NLogConfig" Source="$(var.SolutionDir)src\Solution Items\NLog.config"/>
+            <File Id="Log4NetConfig" Source="$(var.SolutionDir)src\Solution Items\log4net.config"/>
+            <File Id="Log4NetConfigUnix" Source="$(var.SolutionDir)src\Solution Items\log4net.unix.config"/>
+            -->
+            <!--
+            <CopyFile Id="LogConfig" SourceDirectory="$(var.SolutionDir)src\Solution Items\*.config" DestinationDirectory="INSTALLDIR"/>
+            -->
+
+          </Component>
+        </Directory>
       </Directory>
+
+      <Directory Id="ProgramMenuFolder">
+
+        <Directory Id="ProgramMenuSubfolder" Name="$(var.ProductName)">
+          <Component Id="ApplicationShortcuts" Guid="19AB8D2B-B1D2-4E01-B478-5331A2DF71D4">
+
+            <Shortcut Id="MessagingToolkit.Service.ControlPanel" Name="$(var.ProductName)" Description="$(var.ProductName) Control Panel"
+                            Target="[INSTALLDIR]MessagingToolkit.Service.ControlPanel.exe" WorkingDirectory="INSTALLDIR" Icon="ProductIcon"/>
+
+            <RegistryValue Root="HKCU" Key="Software\$(var.ProductManufacturer)\$(var.ProductName)"
+                      Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+
+            <RemoveFolder Id="ProgramMenuSubfolder" On="uninstall"/>
+
+          </Component>
+        </Directory>
+
+      </Directory>
+
     </Directory>
+
   </Fragment>
 
   <Fragment>
-    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-      <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-      <!-- <Component Id="ProductComponent"> -->
-      <!-- TODO: Insert files, registry keys, and other resources here. -->
-      <!-- </Component> -->
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLDIR">
+      <ComponentRef Id="ApplicationShortcuts"/>
+      <ComponentRef Id="ApplicationFiles"/>
     </ComponentGroup>
   </Fragment>
+
 </Wix>

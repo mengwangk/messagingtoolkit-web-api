@@ -1,4 +1,4 @@
-﻿namespace Messagingtoolkit.Service.Client
+﻿namespace MessagingToolkit.Service.Client
 {
     partial class frmServiceClient
     {
@@ -59,14 +59,26 @@
             this.cboPort = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabSendMessage = new System.Windows.Forms.TabPage();
+            this.btnGetSentMessages = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lstSentMessages = new System.Windows.Forms.ListBox();
+            this.btnSendMessage = new System.Windows.Forms.Button();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.tabReceiveMessage = new System.Windows.Forms.TabPage();
-            this.tabAbout = new System.Windows.Forms.TabPage();
+            this.btnGetReceivedMessages = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lstReceivedMessages = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tabSendMessage.SuspendLayout();
+            this.tabReceiveMessage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -74,11 +86,10 @@
             this.tabControl1.Controls.Add(this.tabSettings);
             this.tabControl1.Controls.Add(this.tabSendMessage);
             this.tabControl1.Controls.Add(this.tabReceiveMessage);
-            this.tabControl1.Controls.Add(this.tabAbout);
             this.tabControl1.Location = new System.Drawing.Point(10, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(643, 362);
+            this.tabControl1.Size = new System.Drawing.Size(728, 408);
             this.tabControl1.TabIndex = 0;
             // 
             // tabSettings
@@ -88,7 +99,7 @@
             this.tabSettings.Location = new System.Drawing.Point(4, 22);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSettings.Size = new System.Drawing.Size(635, 336);
+            this.tabSettings.Size = new System.Drawing.Size(720, 382);
             this.tabSettings.TabIndex = 0;
             this.tabSettings.Text = "Gateway Management";
             this.tabSettings.UseVisualStyleBackColor = true;
@@ -369,37 +380,141 @@
             // 
             // tabSendMessage
             // 
+            this.tabSendMessage.Controls.Add(this.btnGetSentMessages);
+            this.tabSendMessage.Controls.Add(this.label2);
+            this.tabSendMessage.Controls.Add(this.lstSentMessages);
+            this.tabSendMessage.Controls.Add(this.btnSendMessage);
+            this.tabSendMessage.Controls.Add(this.label31);
+            this.tabSendMessage.Controls.Add(this.txtMessage);
+            this.tabSendMessage.Controls.Add(this.label21);
+            this.tabSendMessage.Controls.Add(this.txtPhoneNumber);
             this.tabSendMessage.Location = new System.Drawing.Point(4, 22);
             this.tabSendMessage.Name = "tabSendMessage";
             this.tabSendMessage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSendMessage.Size = new System.Drawing.Size(635, 336);
+            this.tabSendMessage.Size = new System.Drawing.Size(720, 382);
             this.tabSendMessage.TabIndex = 1;
             this.tabSendMessage.Text = "Send Message";
             this.tabSendMessage.UseVisualStyleBackColor = true;
             // 
+            // btnGetSentMessages
+            // 
+            this.btnGetSentMessages.Location = new System.Drawing.Point(422, 184);
+            this.btnGetSentMessages.Name = "btnGetSentMessages";
+            this.btnGetSentMessages.Size = new System.Drawing.Size(202, 35);
+            this.btnGetSentMessages.TabIndex = 24;
+            this.btnGetSentMessages.Text = "Get Sent Messages";
+            this.btnGetSentMessages.UseVisualStyleBackColor = true;
+            this.btnGetSentMessages.Click += new System.EventHandler(this.btnGetSentMessages_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(419, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Sent Messages";
+            // 
+            // lstSentMessages
+            // 
+            this.lstSentMessages.FormattingEnabled = true;
+            this.lstSentMessages.HorizontalScrollbar = true;
+            this.lstSentMessages.Location = new System.Drawing.Point(422, 31);
+            this.lstSentMessages.Name = "lstSentMessages";
+            this.lstSentMessages.ScrollAlwaysVisible = true;
+            this.lstSentMessages.Size = new System.Drawing.Size(277, 147);
+            this.lstSentMessages.TabIndex = 22;
+            // 
+            // btnSendMessage
+            // 
+            this.btnSendMessage.Location = new System.Drawing.Point(99, 180);
+            this.btnSendMessage.Name = "btnSendMessage";
+            this.btnSendMessage.Size = new System.Drawing.Size(202, 35);
+            this.btnSendMessage.TabIndex = 21;
+            this.btnSendMessage.Text = "Send Message";
+            this.btnSendMessage.UseVisualStyleBackColor = true;
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(15, 58);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(50, 13);
+            this.label31.TabIndex = 20;
+            this.label31.Text = "Message";
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Location = new System.Drawing.Point(99, 41);
+            this.txtMessage.Multiline = true;
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtMessage.Size = new System.Drawing.Size(270, 128);
+            this.txtMessage.TabIndex = 19;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(15, 18);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(78, 13);
+            this.label21.TabIndex = 17;
+            this.label21.Text = "Phone Number";
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Location = new System.Drawing.Point(99, 15);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(270, 20);
+            this.txtPhoneNumber.TabIndex = 18;
+            // 
             // tabReceiveMessage
             // 
+            this.tabReceiveMessage.Controls.Add(this.btnGetReceivedMessages);
+            this.tabReceiveMessage.Controls.Add(this.label4);
+            this.tabReceiveMessage.Controls.Add(this.lstReceivedMessages);
             this.tabReceiveMessage.Location = new System.Drawing.Point(4, 22);
             this.tabReceiveMessage.Name = "tabReceiveMessage";
-            this.tabReceiveMessage.Size = new System.Drawing.Size(635, 336);
+            this.tabReceiveMessage.Size = new System.Drawing.Size(720, 382);
             this.tabReceiveMessage.TabIndex = 2;
             this.tabReceiveMessage.Text = "Receive Message";
             this.tabReceiveMessage.UseVisualStyleBackColor = true;
             // 
-            // tabAbout
+            // btnGetReceivedMessages
             // 
-            this.tabAbout.Location = new System.Drawing.Point(4, 22);
-            this.tabAbout.Name = "tabAbout";
-            this.tabAbout.Size = new System.Drawing.Size(635, 336);
-            this.tabAbout.TabIndex = 3;
-            this.tabAbout.Text = "About";
-            this.tabAbout.UseVisualStyleBackColor = true;
+            this.btnGetReceivedMessages.Location = new System.Drawing.Point(48, 199);
+            this.btnGetReceivedMessages.Name = "btnGetReceivedMessages";
+            this.btnGetReceivedMessages.Size = new System.Drawing.Size(202, 35);
+            this.btnGetReceivedMessages.TabIndex = 27;
+            this.btnGetReceivedMessages.Text = "Get Received Messages";
+            this.btnGetReceivedMessages.UseVisualStyleBackColor = true;
+            this.btnGetReceivedMessages.Click += new System.EventHandler(this.btnGetReceivedMessages_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(45, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Received Messages";
+            // 
+            // lstReceivedMessages
+            // 
+            this.lstReceivedMessages.FormattingEnabled = true;
+            this.lstReceivedMessages.HorizontalScrollbar = true;
+            this.lstReceivedMessages.Location = new System.Drawing.Point(48, 36);
+            this.lstReceivedMessages.Name = "lstReceivedMessages";
+            this.lstReceivedMessages.ScrollAlwaysVisible = true;
+            this.lstReceivedMessages.Size = new System.Drawing.Size(277, 147);
+            this.lstReceivedMessages.TabIndex = 25;
             // 
             // frmServiceClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 384);
+            this.ClientSize = new System.Drawing.Size(771, 443);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmServiceClient";
@@ -414,6 +529,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.tabSendMessage.ResumeLayout(false);
+            this.tabSendMessage.PerformLayout();
+            this.tabReceiveMessage.ResumeLayout(false);
+            this.tabReceiveMessage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -424,7 +543,6 @@
         private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.TabPage tabSendMessage;
         private System.Windows.Forms.TabPage tabReceiveMessage;
-        private System.Windows.Forms.TabPage tabAbout;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkConnectAtStartup;
         private System.Windows.Forms.TextBox txtGatewayName;
@@ -452,6 +570,17 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnStopGateway;
         private System.Windows.Forms.Button btnStartGateway;
+        private System.Windows.Forms.ListBox lstSentMessages;
+        private System.Windows.Forms.Button btnSendMessage;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox txtMessage;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnGetSentMessages;
+        private System.Windows.Forms.Button btnGetReceivedMessages;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox lstReceivedMessages;
     }
 }
 

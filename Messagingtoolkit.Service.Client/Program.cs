@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Messagingtoolkit.Service.Client
+namespace MessagingToolkit.Service.Client
 {
     static class Program
     {

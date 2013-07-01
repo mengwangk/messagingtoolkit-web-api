@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Messagingtoolkit.Service.Client.Models
+namespace MessagingToolkit.Service.Client.Models
 {
 
     /// <summary>

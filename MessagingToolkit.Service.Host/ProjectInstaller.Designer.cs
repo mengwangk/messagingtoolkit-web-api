@@ -40,7 +40,9 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.ServiceName = "MessagingToolkit Service Provider";
+            this.serviceInstaller1.Description = "MessagingToolkit Service Host";
+            this.serviceInstaller1.DisplayName = "MessagingToolkit Service Host";
+            this.serviceInstaller1.ServiceName = "MessagingToolkit Service Host";
             // 
             // ProjectInstaller
             // 

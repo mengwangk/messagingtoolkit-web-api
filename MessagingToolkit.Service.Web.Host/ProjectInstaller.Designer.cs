@@ -39,7 +39,9 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.ServiceName = "Messagingtoolkit Service Web Host";
+            this.serviceInstaller1.Description = "Messagingtoolkit Web API Host";
+            this.serviceInstaller1.DisplayName = "Messagingtoolkit Web API Host";
+            this.serviceInstaller1.ServiceName = "Messagingtoolkit Web API Host";
             // 
             // ProjectInstaller
             // 

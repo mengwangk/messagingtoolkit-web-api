@@ -44,6 +44,11 @@ namespace MessagingToolkit.Service.Provider
         IServiceProviderContainer Container { get; set; }
 
 
+        /// <summary>
+        /// Executes the specified command.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <returns></returns>
         [WebInvoke(Method = "POST",
           RequestFormat = WebMessageFormat.Json,
           ResponseFormat = WebMessageFormat.Json,

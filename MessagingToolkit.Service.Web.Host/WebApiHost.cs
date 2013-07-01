@@ -68,6 +68,8 @@ namespace MessagingToolkit.Service.Web.Host
         /// <exception cref="System.ArgumentException"></exception>
         public void StartForeground(string[] args)
         {
+            string serviceName = "MessagingToolkit Web API Host";
+            string description = "Service container for Web API";
             if (args.Length > 0)
             {
                 switch (args[0])
@@ -86,7 +88,19 @@ namespace MessagingToolkit.Service.Web.Host
 
                             var transactedInstaller = new TransactedInstaller();
                             var serviceInstaller = new ServiceInstaller();
-                            transactedInstaller.Installers.Add(serviceInstaller);
+                            var serviceProcessInstaller = new ServiceProcessInstaller();
+
+                            serviceInstaller.ServiceName = serviceName;
+                            serviceInstaller.DisplayName = serviceName;
+                            serviceInstaller.Description = description;
+
+                            serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.NetworkService;
+                            serviceProcessInstaller.Password = null;
+                            serviceProcessInstaller.Username = null;
+
+                            transactedInstaller.Installers.AddRange(new System.Configuration.Install.Installer[] {
+                                                            serviceProcessInstaller,
+                                                            serviceInstaller});
                             var ctx = new InstallContext();
                             ctx.Parameters["assemblypath"] = String.Format("{0} \"{1}\"", Assembly.GetExecutingAssembly().Location, directory);
                             transactedInstaller.Context = ctx;
@@ -101,6 +115,9 @@ namespace MessagingToolkit.Service.Web.Host
                         {
                             var transactedInstaller = new TransactedInstaller();
                             var serviceInstaller = new ServiceInstaller();
+                            serviceInstaller.ServiceName = serviceName;
+                            serviceInstaller.DisplayName = serviceName;
+                            serviceInstaller.Description = description;
                             transactedInstaller.Installers.Add(serviceInstaller);
                             var ctx = new InstallContext();
                             ctx.Parameters["assemblypath"] = String.Format("{0}", Assembly.GetExecutingAssembly().Location);

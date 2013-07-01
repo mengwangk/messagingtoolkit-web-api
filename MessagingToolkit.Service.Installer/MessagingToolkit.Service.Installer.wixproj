@@ -23,6 +23,77 @@
   <ItemGroup>
     <Compile Include="Product.wxs" />
   </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="smartgateway.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MessagingToolkit.Service.Client\MessagingToolkit.Service.Client.csproj">
+      <Name>MessagingToolkit.Service.Client</Name>
+      <Project>{4bdac94f-1105-4b5d-9979-11f7f51f55e7}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagingToolkit.Service.Common\MessagingToolkit.Service.Common.csproj">
+      <Name>MessagingToolkit.Service.Common</Name>
+      <Project>{082a6367-9236-4e1f-bce2-b778feecf30e}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagingToolkit.Service.ControlPanel\MessagingToolkit.Service.ControlPanel.csproj">
+      <Name>MessagingToolkit.Service.ControlPanel</Name>
+      <Project>{2ecf1ae2-bbc9-41fd-8df8-b22ed1117deb}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagingToolkit.Service.Host\MessagingToolkit.Service.Host.csproj">
+      <Name>MessagingToolkit.Service.Host</Name>
+      <Project>{5aa7b951-2ef2-43ff-b475-754f797a77b1}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagingToolkit.Service.Provider\MessagingToolkit.Service.Provider.csproj">
+      <Name>MessagingToolkit.Service.Provider</Name>
+      <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagingToolkit.Service.Web.Host\MessagingToolkit.Service.Web.Host.csproj">
+      <Name>MessagingToolkit.Service.Web.Host</Name>
+      <Project>{d8c0002a-e582-4080-b3eb-2e312713d936}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagingToolkit.Service.Web\MessagingToolkit.Service.Web.csproj">
+      <Name>MessagingToolkit.Service.Web</Name>
+      <Project>{4332610c-1124-420d-b5f9-7ae2c7e71822}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

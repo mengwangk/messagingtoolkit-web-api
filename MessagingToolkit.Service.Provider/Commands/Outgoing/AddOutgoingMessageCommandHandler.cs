@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MessagingToolkit.Core;
 using MessagingToolkit.Service.Common.Helpers;
 using MessagingToolkit.Service.Common.Models;
 
@@ -38,6 +39,14 @@ namespace MessagingToolkit.Service.Provider.Commands
                 command.Message.id = EntityHelper.GenerateGuid();
                 command.Message.date_created = EntityHelper.CurrentLocalDateString();
                 command.Message.date_modified = command.Message.date_created;
+                if (string.IsNullOrEmpty(command.Message.status))
+                {
+                    command.Message.status = StringEnum.GetStringValue(MessageStatus.Pending);
+                }
+                if (string.IsNullOrEmpty(command.Message.msg_type))
+                {
+                    command.Message.msg_type = StringEnum.GetStringValue(OutgoingMessageType.SMS);
+                }
                 context.Outgoings.Add(command.Message);
                 context.SaveChanges();
                 return command.Message;
