@@ -32,9 +32,8 @@
 
 
     <Upgrade Id="$(var.ProductUpgradeCode)">
-      <UpgradeVersion Minimum="$(var.ProductVersion)" OnlyDetect="yes" Property="NEWERVERSIONDETECTED"/>
-      <UpgradeVersion Minimum="0.0.0" Maximum="$(var.ProductVersion)" IncludeMinimum="yes" IncludeMaximum="no"
-                      Property="OLDERVERSIONBEINGUPGRADED"/>
+      <UpgradeVersion Minimum="0.0.0" Maximum="$(var.ProductVersion)"  OnlyDetect="no"  IncludeMinimum="yes" IncludeMaximum="no"
+                      Property="PREVIOUSFOUND"/>
     </Upgrade>
 
     <Condition Message="A newer version of $(var.ProductName) is already installed.">NOT NEWERVERSIONDETECTED</Condition>
@@ -46,7 +45,7 @@
     <MediaTemplate CabinetTemplate="$(var.ProductName){0}.cab" EmbedCab="yes"/>
 
     <InstallExecuteSequence>
-      <RemoveExistingProducts After="InstallValidate"/>
+      <RemoveExistingProducts After="InstallInitialize"/>
     </InstallExecuteSequence>
 
     <Feature Id="ProductFeature" Title="MessagingToolkit Web API" Level="1">
@@ -62,16 +61,69 @@
           <Component Id="ApplicationFiles" Guid="0B868AEE-8871-413A-9EB3-64DAD6F84207">
 
             <!-- Binaries -->
-            <File Id="MessagingToolkit.Service.Common" Source="$(var.MessagingToolkit.Service.Common.TargetPath)"/>
+            <!--
+            <File Id="MessagingToolkit.Service.Common" Source="$(var.MessagingToolkit.Service.Common.TargetPath)" />
             <File Id="MessagingToolkit.Service.Client" Source="$(var.MessagingToolkit.Service.Client.TargetPath)"/>
             <File Id="MessagingToolkit.Service.ControlPanel" Source="$(var.MessagingToolkit.Service.ControlPanel.TargetPath)"/>
             <File Id="MessagingToolkit.Service.Host" Source="$(var.MessagingToolkit.Service.Host.TargetPath)"/>
             <File Id="MessagingToolkit.Service.Provider" Source="$(var.MessagingToolkit.Service.Provider.TargetPath)"/>
             <File Id="MessagingToolkit.Service.Web" Source="$(var.MessagingToolkit.Service.Web.TargetPath)"/>
             <File Id="MessagingToolkit.Service.Web.Host" Source="$(var.MessagingToolkit.Service.Web.Host.TargetPath)"/>
-          
+            -->
 
-            
+
+            <File Id="Antlr3.Runtime.dll" Source="$(var.SolutionDir)\output\Antlr3.Runtime.dll" />
+            <File Id="EntityFramework.dll" Source="$(var.SolutionDir)\output\EntityFramework.dll"/>
+            <File Id="log4net.config" Source="$(var.SolutionDir)\output\log4net.config"/>
+            <File Id="log4net.dll" Source="$(var.SolutionDir)\output\log4net.dll"/>
+            <File Id="MessagingToolkit.Barcode.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Barcode.dll"/>
+            <File Id="MessagingToolkit.Core.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Core.dll"/>
+            <File Id="MessagingToolkit.MMS.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.MMS.dll"/>
+            <File Id="MessagingToolkit.Pdu.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Pdu.dll"/>
+            <File Id="MessagingToolkit.Service.Client.exe" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Client.exe"/>
+            <File Id="MessagingToolkit.Service.Client.exe.config" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Client.exe.config"/>
+            <File Id="MessagingToolkit.Service.Common.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Common.dll"/>
+            <File Id="MessagingToolkit.Service.ControlPanel.exe" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.ControlPanel.exe"/>
+            <File Id="MessagingToolkit.Service.ControlPanel.exe.config" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.ControlPanel.exe.config"/>
+            <File Id="MessagingToolkit.Service.Host.exe" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Host.exe"/>
+            <File Id="MessagingToolkit.Service.Host.exe.config" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Host.exe.config"/>
+            <File Id="AForgeMessagingToolkit.Service.Provider.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Provider.dll"/>
+            <File Id="MessagingToolkit.Service.Web.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Web.dll"/>
+            <File Id="MessagingToolkit.Service.Web.Host.exe" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Web.Host.exe"/>
+            <File Id="MessagingToolkit.Service.Web.Host.exe.config" Source="$(var.SolutionDir)\output\MessagingToolkit.Service.Web.Host.exe.config"/>
+            <File Id="MessagingToolkit.Wap.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Wap.dll"/>
+            <File Id="Microsoft.Data.Edm.dll" Source="$(var.SolutionDir)\output\Microsoft.Data.Edm.dll"/>
+            <File Id="Microsoft.Data.OData.dll" Source="$(var.SolutionDir)\output\Microsoft.Data.OData.dll"/>
+            <File Id="Microsoft.Practices.Unity.Configuration.dll" Source="$(var.SolutionDir)\output\Microsoft.Practices.Unity.Configuration.dll"/>
+            <File Id="Microsoft.Practices.Unity.dll" Source="$(var.SolutionDir)\output\Microsoft.Practices.Unity.dll"/>
+            <File Id="Microsoft.Web.Infrastructure.dll" Source="$(var.SolutionDir)\output\Microsoft.Web.Infrastructure.dll"/>
+            <File Id="Microsoft.Web.Mvc.FixedDisplayModes.dll" Source="$(var.SolutionDir)\output\Microsoft.Web.Mvc.FixedDisplayModes.dll"/>
+            <File Id="Newtonsoft.Json.dll" Source="$(var.SolutionDir)\output\Newtonsoft.Json.dll"/>
+            <File Id="nlog.config" Source="$(var.SolutionDir)\output\nlog.config"/>
+            <File Id="NLog.dll" Source="$(var.SolutionDir)\output\NLog.dll"/>
+            <File Id="smartgateway.db" Source="$(var.SolutionDir)\output\smartgateway.db"/>
+            <File Id="System.Data.SQLite.dll" Source="$(var.SolutionDir)\output\System.Data.SQLite.dll"/>
+            <File Id="System.Net.Http.Formatting.dll" Source="$(var.SolutionDir)\output\System.Net.Http.Formatting.dll"/>
+            <File Id="System.Web.Helpers.dll" Source="$(var.SolutionDir)\output\System.Web.Helpers.dll"/>
+            <File Id="System.Web.Http.dll" Source="$(var.SolutionDir)\output\System.Web.Http.dll"/>
+            <File Id="System.Web.Http.OData.dll" Source="$(var.SolutionDir)\output\System.Web.Http.OData.dll"/>
+            <File Id="System.Web.Http.SelfHost.dll" Source="$(var.SolutionDir)\output\System.Web.Http.SelfHost.dll"/>
+            <File Id="System.Web.Http.Tracing.dll" Source="$(var.SolutionDir)\output\System.Web.Http.Tracing.dll"/>
+            <File Id="System.Web.Http.WebHost.dll" Source="$(var.SolutionDir)\output\System.Web.Http.WebHost.dll"/>
+            <File Id="System.Web.Mvc.dll" Source="$(var.SolutionDir)\output\System.Web.Mvc.dll"/>
+            <File Id="System.Web.Optimization.dll" Source="$(var.SolutionDir)\output\System.Web.Optimization.dll"/>
+            <File Id="System.Web.Razor.dll" Source="$(var.SolutionDir)\output\System.Web.Razor.dll"/>
+            <File Id="System.Web.WebPages.Deployment.dll" Source="$(var.SolutionDir)\output\System.Web.WebPages.Deployment.dll"/>
+            <File Id="System.Web.WebPages.dll" Source="$(var.SolutionDir)\output\System.Web.WebPages.dll"/>
+            <File Id="System.Web.WebPages.Razor.dll" Source="$(var.SolutionDir)\output\System.Web.WebPages.Razor.dll"/>
+            <File Id="WebActivator.dll" Source="$(var.SolutionDir)\output\WebActivator.dll"/>
+            <File Id="WebGrease.dll" Source="$(var.SolutionDir)\output\WebGrease.dll"/>
+
+
+
+
+
+
             <!--  External dependencies 
             <File Id="LibJpeg" Source="$(var.LibJpeg.TargetPath)"/>
             <File Id="Video.DirectShow" Source="$(var.Video.DirectShow.TargetPath)"/>
@@ -103,6 +155,70 @@
             -->
 
           </Component>
+
+          <Directory Id="de" Name="de">
+            <Component Id="de_files" Guid="C73CC14E-8FF2-49FC-891D-DE3F11F8E7CF">
+              <File Id="de_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\de\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="de_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\de\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="es" Name="es">
+            <Component Id="es_files" Guid="662185F4-5F04-4615-AA51-6C58C1583787">
+              <File Id="es_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\es\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="es_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\es\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="fr" Name="fr">
+            <Component Id="fr_files" Guid="49918357-B348-4C07-A182-7D4E93DE3EE4">
+              <File Id="fr_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\fr\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="fr_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\fr\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="it" Name="it">
+            <Component Id="it_files" Guid="0854B566-EC58-4F6A-B8C7-4712594536D8">
+              <File Id="it_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\it\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="it_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\it\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="ja" Name="ja">
+            <Component Id="ja_files" Guid="6F230809-D8B2-419A-B4F8-6C23953936C4">
+              <File Id="ja_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\ja\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="ja_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\ja\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="ko" Name="ko">
+            <Component Id="ko_files" Guid="BDB352A0-7CEC-49CE-B958-47E051AA28FD">
+              <File Id="ko_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\ko\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="ko_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\ko\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="ru" Name="ru">
+            <Component Id="ru_files" Guid="8F5C8AA3-6EEA-423D-A09A-6A3C177DD087">
+              <File Id="ru_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\ru\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="ru_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\ru\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="zh_Hans" Name="zh-Hans">
+            <Component Id="zh_Hans_files" Guid="0A4A93DD-1FDD-4AC6-ADFF-E74EB382248E">
+              <File Id="zh_Hans_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\zh-Hans\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="zh_Hans_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\zh-Hans\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
+          <Directory Id="zh_Hant" Name="zh-Hant">
+            <Component Id="zh_Hant_files" Guid="E44A5A70-6F99-4203-A1DD-860D8962F308">
+              <File Id="zh_Hant_Microsoft.Data.Edm.resources.dll" Source="$(var.SolutionDir)\output\zh-Hant\Microsoft.Data.Edm.resources.dll"/>
+              <File Id="zh_Hant_Microsoft.Data.OData.resources.dll" Source="$(var.SolutionDir)\output\zh-Hant\Microsoft.Data.OData.resources.dll"/>
+            </Component>
+          </Directory>
+
         </Directory>
       </Directory>
 
@@ -132,6 +248,15 @@
     <ComponentGroup Id="ProductComponents" Directory="INSTALLDIR">
       <ComponentRef Id="ApplicationShortcuts"/>
       <ComponentRef Id="ApplicationFiles"/>
+      <ComponentRef Id="de_files"/>
+      <ComponentRef Id="es_files"/>
+      <ComponentRef Id="fr_files"/>
+      <ComponentRef Id="it_files"/>
+      <ComponentRef Id="ja_files"/>
+      <ComponentRef Id="ko_files"/>
+      <ComponentRef Id="ru_files"/>
+      <ComponentRef Id="zh_Hans_files"/>
+      <ComponentRef Id="zh_Hant_files"/>
     </ComponentGroup>
   </Fragment>
 
