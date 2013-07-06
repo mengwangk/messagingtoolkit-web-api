@@ -70,6 +70,8 @@ namespace MessagingToolkit.Service.Client.Models
     /// </example>
     public sealed class DeviceInfo
     {
+        public DeviceInfo() { LogLevel = 4; } // Verbose
+
         public int BaudRate { get; set;}
         public int DataBits {get; set;}
         public int Handshake { get; set;}
@@ -79,5 +81,6 @@ namespace MessagingToolkit.Service.Client.Models
         public string Pin { get; set; }
         public bool DisablePinCheck { get; set; }
         public string LicenseKey { get; set; }
+        public int LogLevel { get; set; }
     }
 }

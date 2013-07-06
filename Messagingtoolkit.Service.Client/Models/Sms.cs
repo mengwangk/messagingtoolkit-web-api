@@ -10,6 +10,8 @@ namespace MessagingToolkit.Service.Client.Models
     {
         public string DestinationAddress { get; set; }
         public string Content { get; set; }
+
+        /*
         public int DestinationPort { get; set; }
         public bool Flash { get; set; }
         public List<int> Indexes { get; set; }
@@ -35,5 +37,6 @@ namespace MessagingToolkit.Service.Client.Models
         public bool Persisted { get; set; }
         public int QueuePriority { get; set; }
         public DateTime ScheduledDeliveryDate { get; set; }
+        */
     }
 }
