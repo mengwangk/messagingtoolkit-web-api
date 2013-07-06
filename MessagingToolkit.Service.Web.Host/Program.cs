@@ -85,6 +85,10 @@ namespace MessagingToolkit.Service.Web.Host
                 // Set to log to console if in interactive mode
                 LogManager.SetLogFactory(new ConsoleLogFactory());
             }
+            else
+            {
+                LogManager.SetLogFactory(new Log4NetLogFactory("log4net_webapi.config"));
+            }
 
             // Bootstrap the application
             Bootstrapper.Bootstrap();

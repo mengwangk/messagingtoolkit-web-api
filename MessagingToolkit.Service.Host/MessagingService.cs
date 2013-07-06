@@ -31,6 +31,7 @@ using MessagingToolkit.Service.Host.Proxy;
 using MessagingToolkit.Service.Common.Models;
 using MessagingToolkit.Service.Common.Helpers;
 using MessagingToolkit.Service.Provider.Events;
+using MessagingToolkit.Service.Common;
 
 
 namespace MessagingToolkit.Service.Host
@@ -85,8 +86,6 @@ namespace MessagingToolkit.Service.Host
         /// <exception cref="System.ArgumentException"></exception>
         public void StartForeground(string[] args)
         {
-            string serviceName = "MessagingToolkit Service Host";
-            string description = "Service container for WCF services";
             if (args.Length > 0)
             {
                 switch (args[0])
@@ -107,9 +106,9 @@ namespace MessagingToolkit.Service.Host
                             var serviceInstaller = new ServiceInstaller();
                             var serviceProcessInstaller = new ServiceProcessInstaller();
 
-                            serviceInstaller.ServiceName = serviceName;
-                            serviceInstaller.DisplayName = serviceName;
-                            serviceInstaller.Description = description;
+                            serviceInstaller.ServiceName = GlobalValues.ServiceHostServiceName;
+                            serviceInstaller.DisplayName = GlobalValues.ServiceHostServiceName;
+                            serviceInstaller.Description = GlobalValues.ServiceHostServiceDescription;
 
                             serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.NetworkService;
                             serviceProcessInstaller.Password = null;
@@ -132,9 +131,9 @@ namespace MessagingToolkit.Service.Host
                         {
                             var transactedInstaller = new TransactedInstaller();
                             var serviceInstaller = new ServiceInstaller();
-                            serviceInstaller.ServiceName = serviceName;
-                            serviceInstaller.DisplayName = serviceName;
-                            serviceInstaller.Description = description;
+                            serviceInstaller.ServiceName = GlobalValues.ServiceHostServiceName;
+                            serviceInstaller.DisplayName = GlobalValues.ServiceHostServiceName;
+                            serviceInstaller.Description = GlobalValues.ServiceHostServiceDescription; ;
                             transactedInstaller.Installers.Add(serviceInstaller);
                             var ctx = new InstallContext();
                             ctx.Parameters["assemblypath"] = String.Format("{0}", Assembly.GetExecutingAssembly().Location);

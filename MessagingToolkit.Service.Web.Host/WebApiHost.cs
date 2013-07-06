@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.ServiceProcess;
 using System.Web.Http.SelfHost;
+using MessagingToolkit.Service.Common;
 using MessagingToolkit.Service.Common.Log;
 using MessagingToolkit.Service.Web.CompositionRoot;
 using MessagingToolkit.Service.Web.Helpers.Container;
@@ -68,8 +69,7 @@ namespace MessagingToolkit.Service.Web.Host
         /// <exception cref="System.ArgumentException"></exception>
         public void StartForeground(string[] args)
         {
-            string serviceName = "MessagingToolkit Web API Host";
-            string description = "Service container for Web API";
+          
             if (args.Length > 0)
             {
                 switch (args[0])
@@ -90,9 +90,9 @@ namespace MessagingToolkit.Service.Web.Host
                             var serviceInstaller = new ServiceInstaller();
                             var serviceProcessInstaller = new ServiceProcessInstaller();
 
-                            serviceInstaller.ServiceName = serviceName;
-                            serviceInstaller.DisplayName = serviceName;
-                            serviceInstaller.Description = description;
+                            serviceInstaller.ServiceName = GlobalValues.WebAPIHostServiceName;
+                            serviceInstaller.DisplayName = GlobalValues.WebAPIHostServiceName; ;
+                            serviceInstaller.Description = GlobalValues.WebAPIHostServiceDescription;
 
                             serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.NetworkService;
                             serviceProcessInstaller.Password = null;
@@ -115,9 +115,9 @@ namespace MessagingToolkit.Service.Web.Host
                         {
                             var transactedInstaller = new TransactedInstaller();
                             var serviceInstaller = new ServiceInstaller();
-                            serviceInstaller.ServiceName = serviceName;
-                            serviceInstaller.DisplayName = serviceName;
-                            serviceInstaller.Description = description;
+                            serviceInstaller.ServiceName = GlobalValues.WebAPIHostServiceName;
+                            serviceInstaller.DisplayName = GlobalValues.WebAPIHostServiceName;
+                            serviceInstaller.Description = GlobalValues.WebAPIHostServiceDescription;
                             transactedInstaller.Installers.Add(serviceInstaller);
                             var ctx = new InstallContext();
                             ctx.Parameters["assemblypath"] = String.Format("{0}", Assembly.GetExecutingAssembly().Location);

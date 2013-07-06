@@ -83,8 +83,13 @@ namespace MessagingToolkit.Service.Host
         {
             if (Environment.UserInteractive)
             {
+
                 // Set to log to console if in interactive mode
                 LogManager.SetLogFactory(new ConsoleLogFactory());
+            }
+            else
+            {
+                LogManager.SetLogFactory(new Log4NetLogFactory("log4net_host.config"));
             }
 
             // Bootstrap the application

@@ -74,7 +74,8 @@
 
             <File Id="Antlr3.Runtime.dll" Source="$(var.SolutionDir)\output\Antlr3.Runtime.dll" />
             <File Id="EntityFramework.dll" Source="$(var.SolutionDir)\output\EntityFramework.dll"/>
-            <File Id="log4net.config" Source="$(var.SolutionDir)\output\log4net.config"/>
+            <File Id="log4net_host.config" Source="$(var.SolutionDir)\output\log4net_host.config"/>
+            <File Id="log4net_webapi.config" Source="$(var.SolutionDir)\output\log4net_webapi.config"/>
             <File Id="log4net.dll" Source="$(var.SolutionDir)\output\log4net.dll"/>
             <File Id="MessagingToolkit.Barcode.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Barcode.dll"/>
             <File Id="MessagingToolkit.Core.dll" Source="$(var.SolutionDir)\output\MessagingToolkit.Core.dll"/>
@@ -99,7 +100,8 @@
             <File Id="Microsoft.Web.Infrastructure.dll" Source="$(var.SolutionDir)\output\Microsoft.Web.Infrastructure.dll"/>
             <File Id="Microsoft.Web.Mvc.FixedDisplayModes.dll" Source="$(var.SolutionDir)\output\Microsoft.Web.Mvc.FixedDisplayModes.dll"/>
             <File Id="Newtonsoft.Json.dll" Source="$(var.SolutionDir)\output\Newtonsoft.Json.dll"/>
-            <File Id="nlog.config" Source="$(var.SolutionDir)\output\nlog.config"/>
+            <File Id="nlog_host.config" Source="$(var.SolutionDir)\output\nlog_host.config"/>
+            <File Id="nlog_webapi.config" Source="$(var.SolutionDir)\output\nlog_webapi.config"/>
             <File Id="NLog.dll" Source="$(var.SolutionDir)\output\NLog.dll"/>
             <File Id="smartgateway.db" Source="$(var.SolutionDir)\output\smartgateway.db"/>
             <File Id="System.Data.SQLite.dll" Source="$(var.SolutionDir)\output\System.Data.SQLite.dll"/>

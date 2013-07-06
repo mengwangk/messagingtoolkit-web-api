@@ -59,5 +59,14 @@ namespace MessagingToolkit.Service.ControlPanel.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MessagingToolkit Web API Control Panel is already running. Please close it before opening up another instance..
+        /// </summary>
+        internal static string MsgInstanceRunning {
+            get {
+                return ResourceManager.GetString("MsgInstanceRunning", resourceCulture);
+            }
+        }
     }
 }
