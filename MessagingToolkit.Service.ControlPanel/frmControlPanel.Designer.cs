@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmControlPanel));
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lnkWebApiURL = new System.Windows.Forms.LinkLabel();
+            this.lnkWebSite = new System.Windows.Forms.LinkLabel();
             this.lblWebApiHostStatus = new System.Windows.Forms.Label();
             this.lblServiceProviderStatus = new System.Windows.Forms.Label();
             this.lnkWebApiHostUrl = new System.Windows.Forms.LinkLabel();
@@ -43,10 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnInstallService = new System.Windows.Forms.Button();
             this.btnUninstallWindowsServices = new System.Windows.Forms.Button();
-            this.lnkWebSite = new System.Windows.Forms.LinkLabel();
-            this.lnkWebApiURL = new System.Windows.Forms.LinkLabel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnSampleClient = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +83,46 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Service Control";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(46, 139);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Project Site";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(46, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Default API URL";
+            // 
+            // lnkWebApiURL
+            // 
+            this.lnkWebApiURL.AutoSize = true;
+            this.lnkWebApiURL.Location = new System.Drawing.Point(144, 112);
+            this.lnkWebApiURL.Name = "lnkWebApiURL";
+            this.lnkWebApiURL.Size = new System.Drawing.Size(214, 13);
+            this.lnkWebApiURL.TabIndex = 11;
+            this.lnkWebApiURL.TabStop = true;
+            this.lnkWebApiURL.Text = "http://localhost:1689/messagingtoolkit/api/";
+            this.lnkWebApiURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // lnkWebSite
+            // 
+            this.lnkWebSite.AutoSize = true;
+            this.lnkWebSite.Location = new System.Drawing.Point(144, 139);
+            this.lnkWebSite.Name = "lnkWebSite";
+            this.lnkWebSite.Size = new System.Drawing.Size(264, 13);
+            this.lnkWebSite.TabIndex = 10;
+            this.lnkWebSite.TabStop = true;
+            this.lnkWebSite.Text = "https://code.google.com/p/messagingtoolkit-web-api/";
+            this.lnkWebSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkWebSite_LinkClicked);
             // 
             // lblWebApiHostStatus
             // 
@@ -194,46 +234,6 @@
             this.btnUninstallWindowsServices.UseVisualStyleBackColor = true;
             this.btnUninstallWindowsServices.Click += new System.EventHandler(this.btnUninstallWindowsServices_Click);
             // 
-            // lnkWebSite
-            // 
-            this.lnkWebSite.AutoSize = true;
-            this.lnkWebSite.Location = new System.Drawing.Point(144, 139);
-            this.lnkWebSite.Name = "lnkWebSite";
-            this.lnkWebSite.Size = new System.Drawing.Size(264, 13);
-            this.lnkWebSite.TabIndex = 10;
-            this.lnkWebSite.TabStop = true;
-            this.lnkWebSite.Text = "https://code.google.com/p/messagingtoolkit-web-api/";
-            this.lnkWebSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkWebSite_LinkClicked);
-            // 
-            // lnkWebApiURL
-            // 
-            this.lnkWebApiURL.AutoSize = true;
-            this.lnkWebApiURL.Location = new System.Drawing.Point(144, 112);
-            this.lnkWebApiURL.Name = "lnkWebApiURL";
-            this.lnkWebApiURL.Size = new System.Drawing.Size(214, 13);
-            this.lnkWebApiURL.TabIndex = 11;
-            this.lnkWebApiURL.TabStop = true;
-            this.lnkWebApiURL.Text = "http://localhost:1689/messagingtoolkit/api/";
-            this.lnkWebApiURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Default API URL";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 139);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Project Site";
-            // 
             // btnSampleClient
             // 
             this.btnSampleClient.Location = new System.Drawing.Point(559, 133);
@@ -248,7 +248,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 248);
+            this.ClientSize = new System.Drawing.Size(792, 248);
             this.Controls.Add(this.btnSampleClient);
             this.Controls.Add(this.btnUninstallWindowsServices);
             this.Controls.Add(this.btnInstallService);
