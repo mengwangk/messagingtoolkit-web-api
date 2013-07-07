@@ -252,7 +252,7 @@ namespace MessagingToolkit.Service.ControlPanel
             if (!IsServiceExists(GlobalValues.ServiceHostServiceName))
             {
                 FormHelper.ShowInfo("Install Windows Service for Service Host");
-                ExecuteCommand(GetCurrentDirectory() + System.IO.Path.DirectorySeparatorChar + "MessagingToolkit.Service.Host.exe /install");
+                ExecuteCommand(GetCurrentDirectory() + System.IO.Path.DirectorySeparatorChar + "MessagingToolkit.Service.Host.exe", "/install");
             }
             else
             {
@@ -262,7 +262,7 @@ namespace MessagingToolkit.Service.ControlPanel
             if (!IsServiceExists(GlobalValues.WebAPIHostServiceName))
             {
                 FormHelper.ShowInfo("Install Windows Service for Web API Host");
-                ExecuteCommand(GetCurrentDirectory() + System.IO.Path.DirectorySeparatorChar + "MessagingToolkit.Service.Web.Host.exe /install");
+                ExecuteCommand(GetCurrentDirectory() + System.IO.Path.DirectorySeparatorChar + "MessagingToolkit.Service.Web.Host.exe", "/install");
 
                 // For self hosting, need to reserve the HTTP address as administrator
                 // netsh http add urlacl url=http://+:8080/ user=machine\username.
@@ -278,10 +278,16 @@ namespace MessagingToolkit.Service.ControlPanel
 
         public void ExecuteCommand(string command)
         {
+            ExecuteCommand(command, string.Empty);
+        }
+
+        public void ExecuteCommand(string command, string parameter)
+        {
             try
             {
-                System.Diagnostics.ProcessStartInfo procStartInfo =
-                new System.Diagnostics.ProcessStartInfo("cmd", "/k " + command);
+                string args = "/k \"" + command + "\"";
+                if (!string.IsNullOrEmpty(parameter)) args += " " + parameter;
+                System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", args);
                 procStartInfo.UseShellExecute = false;
                 procStartInfo.CreateNoWindow = false;
                 System.Diagnostics.Process proc = new System.Diagnostics.Process();
@@ -312,7 +318,7 @@ namespace MessagingToolkit.Service.ControlPanel
             if (IsServiceExists(GlobalValues.ServiceHostServiceName))
             {
                 FormHelper.ShowInfo("Uninstall Windows Service for Service Host");
-                ExecuteCommand(GetCurrentDirectory() + System.IO.Path.DirectorySeparatorChar + "MessagingToolkit.Service.Host.exe /uninstall");
+                ExecuteCommand(GetCurrentDirectory() + System.IO.Path.DirectorySeparatorChar + "MessagingToolkit.Service.Host.exe", "/uninstall");
             }
             else
             {
@@ -322,9 +328,9 @@ namespace MessagingToolkit.Service.ControlPanel
             if (IsServiceExists(GlobalValues.WebAPIHostServiceName))
             {
                 FormHelper.ShowInfo("Uninstall Windows Service for Web API Host");
-                ExecuteCommand(GetCurrentDirectory() + System.IO.Path.DirectorySeparatorChar + "MessagingToolkit.Service.Web.Host.exe /uninstall");
+                ExecuteCommand(GetCurrentDirectory() + System.IO.Path.DirectorySeparatorChar + "MessagingToolkit.Service.Web.Host.exe","/uninstall");
                 ExecuteCommand(@"netsh http delete urlacl url=http://+:1689/");
-                
+
             }
             else
             {
@@ -334,7 +340,7 @@ namespace MessagingToolkit.Service.ControlPanel
 
         private void lnkWebSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(lnkWebSite.Text); 
+            Process.Start(lnkWebSite.Text);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
