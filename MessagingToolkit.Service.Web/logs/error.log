@@ -1,0 +1,17 @@
+2013-11-17 20:39:51,217 [8] ERROR MessagesController - Error adding message with id 
+System.ServiceModel.CommunicationObjectFaultedException: The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   at System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   at System.ServiceModel.ClientBase`1.Close()
+   at System.ServiceModel.ClientBase`1.System.IDisposable.Dispose()
+   at MessagingToolkit.Service.Web.Proxy.CommandServiceProxy`2.Process(TCommand command) in c:\MySpace\2009\messagingToolkit\messagingtoolkit-web-api\MessagingToolkit.Service.Web\Proxy\CommandServiceProxy.cs:line 22
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute2[T0,T1,TRet](CallSite site, T0 arg0, T1 arg1)
+   at MessagingToolkit.Service.Web.CompositionRoot.CommandProcessor.Execute[TResult](ICommand`1 command) in c:\MySpace\2009\messagingToolkit\messagingtoolkit-web-api\MessagingToolkit.Service.Web\CompositionRoot\CommandProcessor.cs:line 28
+   at MessagingToolkit.Service.Web.Controllers.MessagesController.Send(Outgoing msg) in c:\MySpace\2009\messagingToolkit\messagingtoolkit-web-api\MessagingToolkit.Service.Web\Controllers\MessagesController.cs:line 46

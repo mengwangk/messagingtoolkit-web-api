@@ -1,0 +1,6 @@
+2013-07-01 18:31:46,205 [1] DEBUG Bootstrapper - Container has 5 registrations:
+2013-07-01 18:31:46,220 [1] DEBUG Bootstrapper - Registered type ------- Microsoft.Practices.Unity.IUnityContainer 
+2013-07-01 18:31:46,220 [1] DEBUG Bootstrapper - Registered type ------- MessagingToolkit.Service.Web.Controllers.GatewaysController 
+2013-07-01 18:31:46,220 [1] DEBUG Bootstrapper - Registered type ------- MessagingToolkit.Service.Web.Controllers.MessagesController 
+2013-07-01 18:31:46,220 [1] DEBUG Bootstrapper - Registered type ------- MessagingToolkit.Service.Provider.Commands.ICommandProcessor 
+2013-07-01 18:31:46,220 [1] DEBUG Bootstrapper - Registered type ------- MessagingToolkit.Service.Provider.Commands.ICommandHandler`2[TCommand,TResult] 
