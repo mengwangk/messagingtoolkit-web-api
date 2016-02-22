@@ -10,3 +10,12 @@ The Web API can be used in different programming languages which makes it very e
 support to their applications.
 
 To get started quickly, use the [installer](/Installer) to try it out.
+
+## Main Screen
+
+![Main Screen](/Screenshot/main_web_api.png?raw=true "Main Screen View")
+
+
+## Desktop Client
+
+![Client Screen](/Screenshot/web_api_client.png?raw=true "Client Screen View")
